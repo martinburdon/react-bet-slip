@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import BetSlipBet from 'components/BetSlipBet.js';
 
 class BetSlip extends Component {
-  getMarketsList() {
-    return this.props.bets.map(bet => {
-      return (
-        <bet-item key={bet.bet_id}>
-          <p>{bet.bet_id}</p>
-          <p>{bet.stake}</p>
-        </bet-item>
-      )
+  getMarketsList(updateStake) {
+    return this.props.betSlip.map(bet => {
+      return <BetSlipBet key={bet.bet_id} updateStake={updateStake} {...bet} />
     });
   }
 
   render() {
+    const { betSlip, clearBetSlip, placeBet, updateStake } = this.props;
+    const totalStake = betSlip.reduce((acc, current) => acc + parseFloat(current.stake || 0), 0);
     return (
       <bet-slip>
-        {this.props.bets.length ? this.getMarketsList() : 'No bets placed'}
+        {betSlip.length ? this.getMarketsList(updateStake) : 'No bets placed'}
+        <button type="submit" disabled={!betSlip.length} onClick={placeBet}>
+          Submit bets
+        </button>
+        <button type="submit" disabled={!betSlip.length} onClick={clearBetSlip}>
+          Remove all selections
+        </button>
+        <p>Total stake: {parseFloat(totalStake).toFixed(2)}</p>
       </bet-slip>
     );
   }

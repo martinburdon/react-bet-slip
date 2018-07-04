@@ -14,23 +14,52 @@ class App extends Component {
     .then(markets => this.setState({ markets }));
   }
 
-  addToSlip = (betid, stake) => {
+  addToSlip = (betid) => {
     // Add bet to bet slip
     const newBet = this.state.markets.find(market => market.bet_id === betid);
-    this.setState({
-      betSlip: [
-        ...this.state.betSlip,
-        newBet
-      ]
-    });
+    newBet.stake = '';
 
-    // Disable in markets state
+    // Disable bet in markets state
     const updatedMarkets = this.state.markets.map(market => {
       const currentMarket = market;
       currentMarket.active = market.bet_id === betid ? true : currentMarket.active;
       return currentMarket;
-    })
-    this.setState({ markets: updatedMarkets });
+    });
+
+    // Update state
+    this.setState({
+      betSlip: [
+        ...this.state.betSlip,
+        newBet
+      ],
+      markets: updatedMarkets
+    });
+  }
+
+  updateStake = (betid, stake) => {
+    const updateBetSlip = this.state.betSlip.map(bet => {
+      const currentBet = bet;
+      currentBet.stake = currentBet.bet_id === betid ? stake : currentBet.stake;
+      return currentBet;
+    });
+
+    this.setState({ betSlip: updateBetSlip });
+  }
+
+  placeBet = () => {
+    console.log('Place bet');
+  }
+
+  clearBetSlip = () => {
+    const updatedMarkets = this.state.markets.map(market => {
+      const currentMarket = market;
+      currentMarket.active = false;
+      return currentMarket;
+    });
+    this.setState({
+      betSlip: [],
+      markets: updatedMarkets
+    });
   }
 
   render() {
@@ -41,7 +70,10 @@ class App extends Component {
           markets={this.state.markets}
         />
         <BetSlip
-          bets={this.state.betSlip}
+          betSlip={this.state.betSlip}
+          clearBetSlip={this.clearBetSlip}
+          placeBet={this.placeBet}
+          updateStake={this.updateStake}
         />
       </main>
     )

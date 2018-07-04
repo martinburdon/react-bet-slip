@@ -28,6 +28,19 @@ markets-list {
   margin-bottom: 2rem;
 }
 
-.active {
+.bet-item.active {
   opacity: 0.4;
+}
+
+.bet-slip-bet {
+  margin-bottom: 2rem;
+}
+
+.bet-slip-bet .stake {
+  width: 4rem;
+}
+
+bet-slip {
+  display: flex;
+  flex-direction: column;
 }
