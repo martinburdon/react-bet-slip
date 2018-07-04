@@ -1,5 +1,33 @@
-body {
+* {
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: 10px;
   font-family: sans-serif;
+  line-height: 1.4;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+markets-list {
+  display: block;
+  margin-right: 2rem;
+}
+
+.bet-item {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.active {
+  opacity: 0.4;
 }
