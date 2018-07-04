@@ -11,19 +11,16 @@ class BetSlipBet extends Component {
 
   getReturns({ numerator, denominator }) {
     const stake = parseFloat(this.props.stake);
-    if (stake > 0) {
-      return parseFloat((numerator / denominator) * stake + stake).toFixed(2);
-    } else {
-      return 0;
-    }
+    return stake > 0 ? parseFloat((numerator / denominator) * stake + stake).toFixed(2) : 0;
   }
 
   render() {
-    const { event, name, odds, stake } = this.props;
+    const { bet_id, event, name, odds, removeFromSlip, stake } = this.props;
     const { numerator, denominator } = odds;
     const returnVal = this.getReturns(odds);
     return (
       <div className="bet-slip-bet">
+        <span onClick={() => removeFromSlip(bet_id)}>&times;</span>
         <p>{name}</p>
         <p>{event}</p>
         <p>{numerator}/{denominator}</p>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Bet from 'components/Bet.js';
+import MarketListBet from 'components/MarketListBet.js';
 
 const getMarketsList = (markets, addToSlip) => {
-  return markets.map(market => <Bet key={market.bet_id} {...market} addToSlip={addToSlip} />);
+  return markets.map(market => <MarketListBet key={market.bet_id} {...market} addToSlip={addToSlip} />);
 };
 
 export default ({ addToSlip, markets }) => {
