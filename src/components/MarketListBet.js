@@ -12,9 +12,9 @@ class Bet extends Component {
     const className = active ? 'bet-item active' : 'bet-item';
     return (
       <div onClick={this.addToSlip} className={className}>
-        <p>{name}</p>
-        <p>{event}</p>
-        <p>{odds.numerator}/{odds.denominator}</p>
+        <p className="name">{name}</p>
+        <p className="event">{event}</p>
+        <p className="odds">{odds.numerator}/{odds.denominator}</p>
       </div>
     )
   }

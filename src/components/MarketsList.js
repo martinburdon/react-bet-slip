@@ -8,7 +8,7 @@ const getMarketsList = (markets, addToSlip) => {
 export default ({ addToSlip, markets }) => {
   return (
     <markets-list>
-      {markets.length ? getMarketsList(markets, addToSlip) : 'Loading...'}
+      {markets.length ? getMarketsList(markets, addToSlip) : <p className="markets-loading">Loading Markets</p>}
     </markets-list>
   );
 }

@@ -1,11 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300,700");
+@import url('https://fonts.googleapis.com/css?family=Lato:300,700');
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 html {
-  font-size: 10px; }
+  font-size: 10px;
+}
 
 body {
   background: #3a414c;
@@ -14,32 +17,39 @@ body {
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.4;
-  letter-spacing: 0.1rem; }
+  letter-spacing: 0.1rem;
+}
 
 main {
   display: flex;
   justify-content: center;
   margin-bottom: 4rem;
-  margin-top: 4rem; }
+  margin-top: 4rem;
+}
 
 .bet-item,
 .bet-slip-bet {
   background: #48505e;
-  position: relative; }
-  .bet-item .name,
-  .bet-slip-bet .name {
+  position: relative;
+
+  .name {
     font-size: 1.6rem;
-    margin-bottom: 0.4rem; }
-  .bet-item .event,
-  .bet-slip-bet .event {
-    font-size: 1.2rem; }
-  .bet-item .odds,
-  .bet-slip-bet .odds {
+    margin-bottom: 0.4rem;
+  }
+
+  .event {
+    font-size: 1.2rem;
+  }
+
+  .odds {
     font-weight: 700;
     position: absolute;
     right: 1rem;
-    top: 1.2rem; }
+    top: 1.2rem;
+  }
+}
 
+// Markets
 markets-list {
   background: #3d4551;
   border-radius: 1rem 0 0 1rem;
@@ -47,22 +57,30 @@ markets-list {
   display: block;
   overflow: hidden;
   width: 24rem;
-  z-index: 1; }
+  z-index: 1;
+}
 
 .markets-loading {
-  padding: 1rem; }
+  padding: 1rem;
+}
 
 .bet-item {
   cursor: pointer;
   display: block;
   margin-bottom: 0.2rem;
   width: 100%;
-  padding: 1rem 2rem; }
-  .bet-item:hover {
-    background: #535c6c; }
-  .bet-item.active {
-    opacity: 0.4; }
+  padding: 1rem 2rem;
 
+  &:hover {
+    background: lighten(#48505e, 5%);
+  }
+
+  &.active {
+    opacity: 0.4;
+  }
+}
+
+// Bet slip
 bet-slip {
   background: #3d4551;
   border-radius: 0 1rem 1rem 0;
@@ -70,15 +88,18 @@ bet-slip {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  width: 24rem; }
+  width: 24rem;
+}
 
 .bet-slip-header {
-  padding: 1rem; }
+  padding: 1rem;
+}
 
 .bet-slip-bet {
   margin-bottom: 0.5rem;
-  padding: 1rem 1rem 1rem 3rem; }
-  .bet-slip-bet .stake {
+  padding: 1rem 1rem 1rem 3rem;
+
+  .stake {
     background: #3d4551;
     border: none;
     border-radius: 0.4rem;
@@ -86,10 +107,15 @@ bet-slip {
     font-size: 1.4rem;
     outline: none;
     padding: 0.4rem 0.6rem;
-    width: 6rem; }
-    .bet-slip-bet .stake::-webkit-outer-spin-button, .bet-slip-bet .stake::-webkit-inner-spin-button {
-      -webkit-appearance: none; }
-  .bet-slip-bet .remove-bet {
+    width: 6rem;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  .remove-bet {
     cursor: pointer;
     font-size: 1.6rem;
     height: 0.8rem;
@@ -97,37 +123,59 @@ bet-slip {
     line-height: 0.4;
     position: absolute;
     top: 1.5rem;
-    width: 0.8rem; }
-    .bet-slip-bet .remove-bet:hover {
-      opacity: 0.6; }
-  .bet-slip-bet .event {
-    margin-bottom: 1rem; }
-  .bet-slip-bet .returns {
-    font-size: 1.2rem; }
-  .bet-slip-bet .stake-area {
+    width: 0.8rem;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .event {
+    margin-bottom: 1rem;
+  }
+
+  .returns {
+    font-size: 1.2rem;
+  }
+
+  .stake-area {
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; }
+    justify-content: space-between;
+  }
+}
 
 .no-bets {
-  color: #8f9aaa;
-  padding: 1rem 1rem 1rem 3rem; }
+  color: lighten(#667386, 15%);
+  padding: 1rem 1rem 1rem 3rem;
+}
+
+.bet-list {
+
+}
 
 .total-stake {
-  padding: 1rem 3rem; }
-  .total-stake .total {
+  padding: 1rem 3rem;
+
+  .total {
     color: #667386;
     font-size: 1rem;
     font-weight: 700;
-    text-transform: uppercase; }
-  .total-stake .value {
+    text-transform: uppercase;
+  }
+
+  .value {
     color: #fff;
     display: block;
-    font-size: 2.2rem; }
-  .total-stake .currency {
+    font-size: 2.2rem;
+  }
+
+  .currency {
     color: #667386;
-    margin-left: 0.2rem; }
+    margin-left: 0.2rem;
+  }
+}
 
 .clear-betslip {
   background: transparent;
@@ -135,10 +183,13 @@ bet-slip {
   cursor: pointer;
   color: #667386;
   font-size: 1.2rem;
-  outline: none; }
-  .clear-betslip[disabled] {
+  outline: none;
+
+  &[disabled] {
     cursor: default;
-    opacity: 0.4; }
+    opacity: 0.4;
+  }
+}
 
 .place-bet {
   background: #2eb4b5;
@@ -148,9 +199,14 @@ bet-slip {
   font-size: 1.6rem;
   font-weight: 300;
   padding: 1.6rem;
-  width: 100%; }
-  .place-bet[disabled] {
+  width: 100%;
+
+  &[disabled] {
     cursor: not-allowed;
-    opacity: 0.4; }
-  .place-bet:hover {
-    background: #33c8c9; }
+    opacity: 0.4;
+  }
+
+  &:hover {
+    background: lighten(#2eb4b5, 5%);
+  }
+}

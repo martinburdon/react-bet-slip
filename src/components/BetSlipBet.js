@@ -20,21 +20,23 @@ class BetSlipBet extends Component {
     const returnVal = this.getReturns(odds);
     return (
       <div className="bet-slip-bet">
-        <span onClick={() => removeFromSlip(bet_id)}>&times;</span>
-        <p>{name}</p>
-        <p>{event}</p>
-        <p>{numerator}/{denominator}</p>
-        <input
-          className="stake"
-          name="stake"
-          onChange={this.stakeChanged}
-          placeholder="0.00"
-          ref={this.stakeRef}
-          type="number"
-          pattern="\d+(|\.\d{1,2})"
-          value={stake}
-        />
-        <p>Returns {returnVal}</p>
+        <span className="remove-bet" onClick={() => removeFromSlip(bet_id)}>&times;</span>
+        <p className="name">{name}</p>
+        <p className="event">{event}</p>
+        <p className="odds">{numerator}/{denominator}</p>
+        <div className="stake-area">
+          <input
+            className="stake"
+            name="stake"
+            onChange={this.stakeChanged}
+            placeholder="0.00"
+            ref={this.stakeRef}
+            type="number"
+            pattern="\d+(|\.\d{1,2})"
+            value={stake}
+          />
+        <p className="returns">{returnVal} GBP</p>
+        </div>
       </div>
     )
   }
