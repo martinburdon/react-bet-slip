@@ -67,7 +67,13 @@ class App extends Component {
       },
       body: JSON.stringify(body)
     })
-    .then(res => console.log(res));
+    .then(res => {
+      // TODO: Show a success notification
+      // TODO: Handle errors
+      if (res.ok) {
+        this.clearBetSlip();
+      }
+    });
   }
 
   clearBetSlip = () => {

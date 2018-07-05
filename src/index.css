@@ -72,9 +72,6 @@ bet-slip {
   overflow: hidden;
   width: 24rem; }
 
-.bet-slip-header {
-  padding: 1rem; }
-
 .bet-slip-bet {
   margin-bottom: 0.5rem;
   padding: 1rem 1rem 1rem 3rem; }
@@ -135,6 +132,7 @@ bet-slip {
   cursor: pointer;
   color: #667386;
   font-size: 1.2rem;
+  padding: 1rem;
   outline: none; }
   .clear-betslip[disabled] {
     cursor: default;
@@ -148,6 +146,7 @@ bet-slip {
   font-size: 1.6rem;
   font-weight: 300;
   padding: 1.6rem;
+  outline: none;
   width: 100%; }
   .place-bet[disabled] {
     cursor: not-allowed;

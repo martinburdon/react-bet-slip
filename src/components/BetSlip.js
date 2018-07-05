@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BetSlipBet from 'components/BetSlipBet.js';
+import PlaceBet from 'components/PlaceBet.js';
 
 class BetSlip extends Component {
   getMarketsList() {
@@ -23,24 +24,18 @@ class BetSlip extends Component {
     const { betSlip, clearBetSlip, placeBet } = this.props;
     const betList = betSlip.length ? this.getMarketsList() : <p className="no-bets">No bets placed</p>;
     const totalStake = this.getTotalStake();
-    console.log(totalStake);
-    console.log(typeof totalStake);
+
     return (
       <bet-slip>
-        <div className="bet-slip-header">
-          <button className="clear-betslip" type="submit" disabled={!betSlip.length} onClick={clearBetSlip}>Clear betslip</button>
-        </div>
+        <button
+          className="clear-betslip"
+          type="submit"
+          disabled={!betSlip.length}
+          onClick={clearBetSlip}>
+          Clear betslip
+        </button>
         <div className="bet-list">{betList}</div>
-        <div className="bet-slip-footer">
-          <div className="total-stake">
-            <span className="total">Total bet amount:</span>
-            <span className="value">
-              {totalStake}
-              <span className="currency">GBP</span>
-            </span>
-          </div>
-          <button className="place-bet" type="submit" disabled={!parseFloat(totalStake)} onClick={placeBet}>Place bet</button>
-        </div>
+        <PlaceBet totalStake={totalStake} placeBet={placeBet} />
       </bet-slip>
     );
   }
