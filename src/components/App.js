@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MarketsList from 'components/MarketsList.js';
 import BetSlip from 'components/BetSlip.js';
+import { toggleActiveStatus } from 'helpers.js';
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
     const newBet = this.state.markets.find(market => market.bet_id === betid);
     newBet.stake = '';
 
-    const updatedMarkets = this.state.markets.map(market => this.toggleBetActiveStatus(market, betid, true));
+    const updatedMarkets = this.state.markets.map(market => toggleActiveStatus(market, betid, true));
 
     this.setState({
       betSlip: [
@@ -31,18 +32,12 @@ class App extends Component {
 
   removeFromSlip = (betid) => {
     const updatedBetSlip = this.state.betSlip.filter(bet => bet.bet_id !== betid);
-    const updatedMarkets = this.state.markets.map(market => this.toggleBetActiveStatus(market, betid, false));
+    const updatedMarkets = this.state.markets.map(market => toggleActiveStatus(market, betid, false));
 
     this.setState({
       betSlip: updatedBetSlip,
       markets: updatedMarkets
     });
-  }
-
-  toggleBetActiveStatus(market, betid, status) {
-    const currentMarket = market;
-    currentMarket.active = market.bet_id === betid ? status : currentMarket.active;
-    return currentMarket;
   }
 
   updateStake = (betid, stake) => {
@@ -56,8 +51,6 @@ class App extends Component {
   }
 
   placeBet = () => {
-    console.log('Place bet');
-
     // Multiple bet request
     // const body = this.state.betSlip.map(({ bet_id, stake }) => ({ bet_id, stake }));
 
@@ -66,11 +59,6 @@ class App extends Component {
       bet_id: this.state.betSlip[0].bet_id,
       stake: this.state.betSlip[0].stake
     };
-
-    // const body = {
-    //   bet_id: 2,
-    //   stake: 3
-    // };
 
     fetch(`${this.props.api}/bets`, {
       method: 'POST',
@@ -88,6 +76,7 @@ class App extends Component {
       currentMarket.active = false;
       return currentMarket;
     });
+
     this.setState({
       betSlip: [],
       markets: updatedMarkets
