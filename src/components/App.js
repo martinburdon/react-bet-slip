@@ -9,7 +9,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://rxtechnicaltest.herokuapp.com/markets')
+    fetch(`${this.props.api}/markets`)
     .then(res => res.json())
     .then(markets => this.setState({ markets }));
   }
@@ -57,6 +57,29 @@ class App extends Component {
 
   placeBet = () => {
     console.log('Place bet');
+
+    // Multiple bet request
+    // const body = this.state.betSlip.map(({ bet_id, stake }) => ({ bet_id, stake }));
+
+    // Single bet request
+    const body = {
+      bet_id: this.state.betSlip[0].bet_id,
+      stake: this.state.betSlip[0].stake
+    };
+
+    // const body = {
+    //   bet_id: 2,
+    //   stake: 3
+    // };
+
+    fetch(`${this.props.api}/bets`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .then(res => console.log(res));
   }
 
   clearBetSlip = () => {

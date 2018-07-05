@@ -5,7 +5,7 @@ class BetSlipBet extends Component {
 
   stakeChanged = () => {
     const id = this.props.bet_id;
-    const newVal = this.stakeRef.current.value;
+    const newVal = parseFloat(this.stakeRef.current.value);
     this.props.updateStake(id, newVal);
   }
 
