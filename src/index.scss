@@ -88,6 +88,7 @@ markets-list {
   }
 
   &.active {
+    cursor: not-allowed;
     opacity: 0.4;
   }
 }

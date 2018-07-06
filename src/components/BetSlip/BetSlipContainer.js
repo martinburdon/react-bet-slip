@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import BetSlipBet from 'components/BetSlipBet.js';
-import PlaceBet from 'components/PlaceBet.js';
+import BetSlipBetContainer from 'components/BetSlipBet/BetSlipBetContainer.js';
+import BetSlip from 'components/BetSlip/BetSlip.js';
 
-class BetSlip extends Component {
+class BetSlipContainer extends Component {
   getMarketsList() {
     const { betSlip, removeFromSlip, updateStake } = this.props;
     return betSlip.map(bet => (
-      <BetSlipBet
+      <BetSlipBetContainer
         key={bet.bet_id}
         removeFromSlip={removeFromSlip}
         updateStake={updateStake}
@@ -26,19 +26,15 @@ class BetSlip extends Component {
     const totalStake = this.getTotalStake();
 
     return (
-      <bet-slip>
-        <button
-          className="clear-betslip"
-          type="submit"
-          disabled={!betSlip.length}
-          onClick={clearBetSlip}>
-          Clear betslip
-        </button>
-        <div className="bet-list">{betList}</div>
-        <PlaceBet totalStake={totalStake} placeBet={placeBet} />
-      </bet-slip>
-    );
+      <BetSlip
+        betList={betList}
+        betSlip={betSlip}
+        clearBetSlip={clearBetSlip}
+        placeBet={placeBet}
+        totalStake={totalStake}
+      />
+    )
   }
 }
 
-export default BetSlip;
+export default BetSlipContainer;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MarketListBet from 'components/MarketListBet/MarketListBet.js';
 
 class Bet extends Component {
   addToSlip = () => {
@@ -11,12 +12,15 @@ class Bet extends Component {
     const { active, event, name, odds } = this.props;
     const className = active ? 'bet-item active' : 'bet-item';
     return (
-      <div onClick={this.addToSlip} className={className}>
-        <p className="name">{name}</p>
-        <p className="event">{event}</p>
-        <p className="odds">{odds.numerator}/{odds.denominator}</p>
-      </div>
-    )
+      <MarketListBet
+        active={active}
+        addToSlip={this.addToSlip}
+        className={className}
+        event={event}
+        name={name}
+        odds={odds}
+      />
+    );
   }
 }
 

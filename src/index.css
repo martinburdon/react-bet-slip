@@ -74,6 +74,7 @@ markets-list {
   .bet-item:hover {
     background: #535c6c; }
   .bet-item.active {
+    cursor: not-allowed;
     opacity: 0.4; }
 
 bet-slip {

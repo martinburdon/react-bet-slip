@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MarketsList from 'components/MarketsList.js';
-import BetSlip from 'components/BetSlip.js';
+import MarketsListContainer from 'components/MarketsList/MarketsListContainer.js';
+import BetSlipContainer from 'components/BetSlip/BetSlipContainer.js';
 import { toggleActiveStatus } from 'helpers.js';
 
 class App extends Component {
@@ -94,11 +94,11 @@ class App extends Component {
   render() {
     return (
       <main>
-        <MarketsList
+        <MarketsListContainer
           addToSlip={this.addToSlip}
           markets={this.state.markets}
         />
-        <BetSlip
+        <BetSlipContainer
           betSlip={this.state.betSlip}
           clearBetSlip={this.clearBetSlip}
           placeBet={this.placeBet}
