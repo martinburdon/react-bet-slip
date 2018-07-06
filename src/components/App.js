@@ -15,11 +15,12 @@ class App extends Component {
     .then(markets => this.setState({ markets }));
   }
 
-  addToSlip = (betid) => {
-    const newBet = this.state.markets.find(market => market.bet_id === betid);
+  addToSlip = betid => {
+    const markets = this.state.markets;
+    const newBet = markets.find(market => market.bet_id === betid);
     newBet.stake = '';
 
-    const updatedMarkets = this.state.markets.map(market => toggleActiveStatus(market, betid, true));
+    const updatedMarkets = markets.map(market => toggleActiveStatus(market, betid, true));
 
     this.setState({
       betSlip: [
@@ -30,7 +31,7 @@ class App extends Component {
     });
   }
 
-  removeFromSlip = (betid) => {
+  removeFromSlip = betid => {
     const updatedBetSlip = this.state.betSlip.filter(bet => bet.bet_id !== betid);
     const updatedMarkets = this.state.markets.map(market => toggleActiveStatus(market, betid, false));
 
@@ -51,13 +52,14 @@ class App extends Component {
   }
 
   placeBet = () => {
-    // Multiple bet request
+    // Get bets for a multiple bet request - not currently supported
     // const body = this.state.betSlip.map(({ bet_id, stake }) => ({ bet_id, stake }));
 
     // Single bet request
+    const singleBet = this.state.betSlip[0];
     const body = {
-      bet_id: this.state.betSlip[0].bet_id,
-      stake: this.state.betSlip[0].stake
+      bet_id: singleBet.bet_id,
+      stake: singleBet.stake
     };
 
     fetch(`${this.props.api}/bets`, {
@@ -69,7 +71,7 @@ class App extends Component {
     })
     .then(res => {
       // TODO: Show a success notification
-      // TODO: Handle errors
+      // TODO: Handle any errors
       if (res.ok) {
         this.clearBetSlip();
       }

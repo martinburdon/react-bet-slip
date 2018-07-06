@@ -20,12 +20,20 @@ main {
   display: flex;
   justify-content: center;
   margin-bottom: 4rem;
-  margin-top: 4rem; }
+  margin-top: 4rem;
+  min-height: 57.6rem; }
 
 .bet-item,
 .bet-slip-bet {
   background: #48505e;
   position: relative; }
+  .bet-item .name,
+  .bet-item .event,
+  .bet-item .odds,
+  .bet-slip-bet .name,
+  .bet-slip-bet .event,
+  .bet-slip-bet .odds {
+    text-shadow: 0 0.1rem 0.2rem #00000035; }
   .bet-item .name,
   .bet-slip-bet .name {
     font-size: 1.6rem;
@@ -50,7 +58,9 @@ markets-list {
   z-index: 1; }
 
 .markets-loading {
-  padding: 1rem; }
+  color: #8f9aaa;
+  padding: 1rem;
+  text-align: center; }
 
 .bet-item {
   cursor: pointer;
@@ -113,6 +123,10 @@ bet-slip {
 
 .total-stake {
   padding: 1rem 3rem; }
+  .total-stake .total,
+  .total-stake .value,
+  .total-stake .currency {
+    text-shadow: 0 0.1rem 0.2rem #00000035; }
   .total-stake .total {
     color: #667386;
     font-size: 1rem;

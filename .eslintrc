@@ -1,0 +1,19 @@
+{
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: [
+          './src',
+          './node_modules'
+        ]
+      }
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "modules": true
+    }
+  }
+}

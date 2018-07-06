@@ -4,8 +4,8 @@ import PlaceBet from 'components/PlaceBet.js';
 
 class BetSlip extends Component {
   getMarketsList() {
-    const { removeFromSlip, updateStake } = this.props;
-    return this.props.betSlip.map(bet => (
+    const { betSlip, removeFromSlip, updateStake } = this.props;
+    return betSlip.map(bet => (
       <BetSlipBet
         key={bet.bet_id}
         removeFromSlip={removeFromSlip}

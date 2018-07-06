@@ -25,12 +25,19 @@ main {
   justify-content: center;
   margin-bottom: 4rem;
   margin-top: 4rem;
+  min-height: 57.6rem;
 }
 
 .bet-item,
 .bet-slip-bet {
   background: #48505e;
   position: relative;
+
+  .name,
+  .event,
+  .odds {
+    text-shadow: 0 0.1rem 0.2rem #00000035;
+  }
 
   .name {
     font-size: 1.6rem;
@@ -61,7 +68,9 @@ markets-list {
 }
 
 .markets-loading {
+  color: lighten(#667386, 15%);
   padding: 1rem;
+  text-align: center;
 }
 
 .bet-item {
@@ -149,6 +158,12 @@ bet-slip {
 
 .total-stake {
   padding: 1rem 3rem;
+
+  .total,
+  .value,
+  .currency {
+    text-shadow: 0 0.1rem 0.2rem #00000035;
+  }
 
   .total {
     color: #667386;
