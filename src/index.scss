@@ -11,11 +11,15 @@ html {
 }
 
 body {
+  align-items: center;
   background: #3a414c;
   color: #d1d2d3;
+  display: flex;
   font-family: 'Lato', sans-serif;
   font-size: 1.4rem;
   font-weight: 300;
+  height: 100vh;
+  justify-content: center;
   line-height: 1.4;
   letter-spacing: 0.1rem;
 }
@@ -23,8 +27,7 @@ body {
 main {
   display: flex;
   justify-content: center;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
+  margin: 5rem 0;
   min-height: 57.6rem;
 }
 
